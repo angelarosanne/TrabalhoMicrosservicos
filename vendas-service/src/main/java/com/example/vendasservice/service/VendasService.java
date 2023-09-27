@@ -24,7 +24,7 @@ public class VendasService {
 
         boolean resultado = this.webClientBuilder.build()
                     .post()
-                    .uri("http://localhost:8080/api/estoque/" + vendasRequest.getCodigoDeBarras())
+                    .uri("lb://estoque-service/api/estoque/" + vendasRequest.getCodigoDeBarras())
                     .bodyValue(vendasRequest.getCodigoDeBarras())
                     .retrieve()
                     .bodyToMono(boolean.class)
@@ -33,7 +33,7 @@ public class VendasService {
 
         boolean resultado2 = this.webClientBuilder.build()
                 .post()
-                .uri("http://localhost:8080/api/cliente/" + vendasRequest.getCpf())
+                .uri("lb://cliente-service/api/cliente/" + vendasRequest.getCpf())
                 .bodyValue(vendasRequest.getCpf())
                 .retrieve()
                 .bodyToMono(boolean.class)
