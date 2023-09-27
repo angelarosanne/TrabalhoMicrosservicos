@@ -1,0 +1,45 @@
+version: '3'
+services:
+  ### Posgres database for estoque
+  db-estoque:
+    container_name: db-estoque
+    image: postgres:15.2
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ms_estoque
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - 5431:5431
+    expose:
+      - 5431
+    command: -p 5431
+
+  ### MySQL database for vendas
+  db-vendas:
+    container_name: db-vendas
+    image: mysql:8.0.33
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ms_vendas
+      MYSQL_ROOT_PASSWORD: 1234  # Defina a senha do usuário root aqui
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+
+
+  ### Posgres database for clientes
+  db-clientes:
+    container_name: db-clientes
+    image: postgres:15.2
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ms_clientes
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    command: -p 5432
