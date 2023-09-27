@@ -45,18 +45,11 @@ public class VendasService {
             .cpf(vendasRequest.getCpf())
             .quantidade(vendasRequest.getQuantidade())
             .build();
-            
             this.vendasRepository.save(vendas);
-        }else{
-            throw new IllegalArgumentException("Erro na compra, não tem produto ou cliente não cadastrado");
+        }else {
+            throw new IllegalArgumentException("Erro na compra: Não tem produto no estoque ou cliente não cadastrado");
         }
 
-        
-        
     }
-
-
-
-
 
 }
